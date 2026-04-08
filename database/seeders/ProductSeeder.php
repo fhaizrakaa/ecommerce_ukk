@@ -15,6 +15,7 @@ class ProductSeeder extends Seeder
             'description' => 'Kaos nyaman untuk pria',
             'price' => 100000,
             'stock' => 10,
+            'image' => 'kaos.jpg',
         ]);
 
         Product::create([
@@ -23,6 +24,7 @@ class ProductSeeder extends Seeder
             'description' => 'Dress cantik untuk wanita',
             'price' => 200000,
             'stock' => 5,
+            'image' => 'dress.jpg',
         ]);
 
         Product::create([
@@ -31,6 +33,7 @@ class ProductSeeder extends Seeder
             'description' => 'Baju lucu untuk anak',
             'price' => 80000,
             'stock' => 8,
+            'image' => 'anak.jpg',
         ]);
     }
 }

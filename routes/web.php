@@ -70,10 +70,7 @@ Route::middleware(['auth'])->group(function () {
 */
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/admin', function () {
-        $products = \App\Models\Product::all();
-        return view('admin.dashboard', compact('products'));
-    })->name('admin.dashboard');
+    Route::get('/admin', [ProductController::class, 'adminDashboard'])->name('admin.dashboard');
 
     // CRUD PRODUCT
     Route::resource('products', ProductController::class)

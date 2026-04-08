@@ -137,6 +137,7 @@
             text-decoration: none;
             font-size: 20px;
             color: #444;
+            position: relative;
         }
 
         .logout-btn {
@@ -302,6 +303,20 @@
     background: #f5e6ff;
     border-radius: 8px;
 }
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #ff4757;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 50%;
+    min-width: 15px;
+    text-align: center;
+}
     </style>
 </head>
 <script>
@@ -321,7 +336,13 @@
 
         @auth
             @if(auth()->user()->role === 'user')
-                <a href="{{ route('cart.index') }}" class="cart-icon">🛒</a>
+                <a href="{{ route('cart.index') }}" class="cart-icon">
+                    🛒
+                    @php $cartCount = \App\Models\Cart::where('user_id', Auth::id())->sum('quantity'); @endphp
+                    @if($cartCount > 0)
+                        <span class="cart-badge">{{ $cartCount }}</span>
+                    @endif
+                </a>
             @endif
 
             <div class="profile">
