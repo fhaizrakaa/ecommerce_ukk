@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Address;
+
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +30,6 @@ public function index(Request $request)
     foreach ($carts as $cart) {
         $total += $cart->product->price * $cart->quantity;
     }
-
-     $addresses = Address::where('user_id', auth()->id())->get();
 
     return view('checkout.index', compact('carts', 'total'));
 }

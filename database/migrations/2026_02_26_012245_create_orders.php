@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::create('orders', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        $table->foreignId('address_id')->constrained()->onDelete('cascade');
-        $table->integer('total_price');
-        $table->string('status')->default('pending');
-        $table->timestamps();
-    });
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->text('alamat');
+            $table->integer('total_price');
+            $table->string('status')->default('pending');
+            $table->timestamps();
+        });
     }
 
     /**
